@@ -69,4 +69,28 @@ RSpec.describe Election do
                                       "Ida I"=>6
                                     })
   end
+
+  describe 'election winners' do
+    let!(:candidate1) {race1.register_candidate!({name: "Diana D", party: :democrat})}
+    let!(:candidate2) {race1.register_candidate!({name: "Roberto R", party: :republican})}
+
+    xit 'displays winners of all races, in an array' do
+      candidate3 = race2.register_candidate!({name: "Diego D", party: :democrat})
+      candidate4 = race2.register_candidate!({name: "Rita R", party: :republican})
+      candidate5 = race2.register_candidate!({name: "Ida I", party: :independent})
+
+      4.times {candidate1.vote_for!}
+      1.times {candidate2.vote_for!}
+      1.times {candidate3.vote_for!}
+      6.times {candidate4.vote_for!}
+      6.times {candidate5.vote_for!}
+
+      race1.close!
+      race2.close!
+    
+      race3 = Race.new("Colorado District 5 Representative")
+
+      expect(election.winners).to eq [candidate1]
+    end
+  end
 end
