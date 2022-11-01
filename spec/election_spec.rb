@@ -61,13 +61,12 @@ RSpec.describe Election do
     10.times {candidate3.vote_for!}
     6.times {candidate4.vote_for!}
     6.times {candidate5.vote_for!}
-    
-    expect(election.vote_counts).to eq {
+    expect(election.vote_counts).to eq ({
                                       "Diana D"=>4, 
                                       "Roberto R"=>1, 
                                       "Diego D"=>10, 
                                       "Rita R"=>6, 
                                       "Ida I"=>6
-                                    }
+                                    })
   end
 end
