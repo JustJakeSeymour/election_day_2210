@@ -13,5 +13,22 @@ class Race
     return @candidates.last
   end
 
+  def open?
+    @open
+  end
+
+  def close!
+    @open = false
+  end
+
+  def winner
+    if !@open
+      candidates.max_by{|candidate| candidate.votes}
+    else
+      false
+    end
+  end
+
   
+
 end

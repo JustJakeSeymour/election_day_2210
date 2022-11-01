@@ -42,7 +42,7 @@ RSpec.describe Race do
 
     let!(:candidate1) {race1.register_candidate!({name: "Diana D", party: :democrat})}
     let!(:candidate2) {race1.register_candidate!({name: "Roberto R", party: :republican})}
-    
+
     it 'knows if race is open using a method, open is default' do
       expect(race1.open?).to be true
     end
@@ -63,7 +63,7 @@ RSpec.describe Race do
       1.times {candidate2.vote_for!}
       race1.close!
       
-      expect(race1.open?).to be false
+      expect(race1.open?).to eq false
       expect(race1.winner).to be candidate1
     end
 
@@ -80,6 +80,7 @@ RSpec.describe Race do
 
       race1.close!
       race2.close!
+      require 'pry'; binding.pry
       expect(race1.tie?).to be false
 
       expect(race2.tie?).to be true
