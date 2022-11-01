@@ -1,6 +1,7 @@
 class Candidate
 
-  attr_reader :info, :votes
+  attr_reader :info, 
+              :votes
 
   def initialize(info)
     @info = info
