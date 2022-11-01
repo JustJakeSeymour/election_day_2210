@@ -26,10 +26,13 @@ RSpec.describe Race do
     candidate1 = race.register_candidate!({name: "Diana D", party: :democrat})
 
     expect(race.candidates.size).to eq 1
+    expect(race.candidates).to eq [candidate1]
+    expect(race.candidates[0]).to be_a Candidate
 
     candidate2 = race.register_candidate!({name: "Roberto R", party: :republican})
 
     expect(race.candidates.size).to eq 2
-    expect(race.candidates[0]).to be_a Candidate
+    expect(race.candidates).to eq [candidate1, candidate2]
+    expect(race.candidates[1]).to be_a Candidate
   end
 end

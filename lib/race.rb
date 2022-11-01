@@ -9,8 +9,6 @@ class Race
 
   def register_candidate!(candidate)
     @candidates << Candidate.new(candidate)
-    return Candidate.new(candidate)
+    return @candidates.last
   end
-
-  
 end
